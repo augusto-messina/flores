@@ -58,14 +58,29 @@
       </div>
     </div>
 
- <button id="goToFlowers" class="letter-button">
+    <!-- 🌼 Botón debajo de la carta -->
+<button id="goToFlowers" class="letter-button">
   Ver tus flores ->🌻
 </button>
+</a>
 
 <script>
-  document.getElementById("goToFlowers").onclick = function() {
-    window.location.href = "../flores-lulu/index1.html";
+const envelope = document.querySelector(".envelope");
+const button = document.getElementById("goToFlowers");
+
+envelope.addEventListener("click", () => {
+  envelope.classList.toggle("open");
+
+  // Mostrar botón solo si la carta se abre
+  if (envelope.classList.contains("open")) {
+    button.style.display = "block";
   }
+});
+
+button.addEventListener("click", () => {
+  // Redirige a otra página
+  window.location.href = "../flores-lulu/index1.html";
+});
 </script>
 
   </div>
