@@ -4,6 +4,22 @@
   <meta charset="UTF-8">
   <title>Flores de Criss 🌻🍁</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CENTRAR EL BOTÓN */
+    .container {
+      display: flex;
+      flex-direction: column; /* apila verticalmente los hijos */
+      align-items: center;    /* centra horizontalmente */
+    }
+
+    .letter-button {
+      margin-top: 40px;       /* separa el botón del sobre */
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;          /* oculto por defecto */
+    }
+  </style>
 </head>
 
 <body>
@@ -42,15 +58,10 @@
       </div>
     </div>
 
- <button id="goToFlowers" class="letter-button">
-  Ver tus flores ->🌻
-</button>
-
-<script>
-  document.getElementById("goToFlowers").onclick = function() {
-    window.location.href = "../flores-lulu/index1.html";
-  }
-</script>
+    <!-- BOTÓN CENTRADO -->
+    <button id="goToFlowers" class="letter-button">
+      Ver tus flores ->🌻
+    </button>
 
   </div>
 
@@ -63,11 +74,20 @@
   <script>
     const envelope = document.querySelector(".envelope");
     const music = document.getElementById("bg-music");
+    const button = document.getElementById("goToFlowers");
 
     // Abrir/cerrar carta + reproducir música en el primer click
     envelope.addEventListener("click", () => {
       envelope.classList.toggle("open");
 
+      // Mostrar botón después de abrir
+      if (envelope.classList.contains("open")) {
+        setTimeout(() => {
+          button.style.display = "block"; // muestra el botón
+        }, 500); // 0.5s de retraso opcional
+      }
+
+      // Reproducir música
       if (music.paused) {
         music.play().catch(err => {
           console.log("El navegador bloqueó el autoplay hasta interacción:", err);
@@ -75,9 +95,9 @@
       }
     });
 
-    // Redirigir al index1 al tocar el botón
-    document.getElementById("goToFlowers").addEventListener("click", () => {
-      window.location.href = "index1.html";
+    // Redirigir al hacer clic en el botón
+    button.addEventListener("click", () => {
+      window.location.href = "index1.html"; // reemplaza con la URL deseada
     });
   </script>
 </body>
